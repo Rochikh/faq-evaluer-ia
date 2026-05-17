@@ -1,0 +1,39 @@
+{
+  "name": "FAQ Évaluer en formation à l'ère de l'IA",
+  "short_name": "FAQ Évaluer IA",
+  "description": "Banque d'objections et réponses pour interventions sur l'évaluation à l'ère de l'IA générative",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf7f2",
+  "theme_color": "#a0322d",
+  "lang": "fr-FR",
+  "categories": ["education", "productivity", "reference"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
