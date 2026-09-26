@@ -1,13 +1,13 @@
 {
   "name": "FAQ Évaluer en formation à l'ère de l'IA",
   "short_name": "FAQ Évaluer IA",
-  "description": "Banque d'objections et réponses pour interventions sur l'évaluation à l'ère de l'IA générative",
+  "description": "50 questions sur l'évaluation en formation à l'ère de l'IA générative, avec des réponses courtes et sourcées",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#faf7f2",
-  "theme_color": "#a0322d",
+  "background_color": "#fdfdfb",
+  "theme_color": "#1d3db0",
   "lang": "fr-FR",
   "categories": ["education", "productivity", "reference"],
   "icons": [

@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="FAQ Évaluer IA">
+<meta name="theme-color" content="#1a1815" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)">
+<title>FAQ — Évaluer en formation à l'ère de l'IA</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf7f2;
+  --bg-alt: #f4efdf;
+  --text: #1a1a1a;
+  --muted: #6b6b6b;
+  --accent: #a0322d;
+  --accent-soft: #f3d9d4;
+  --card-bg: #ffffff;
+  --border: #e8e2d4;
+  --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.03);
+  --shadow-hover: 0 2px 4px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  --display: 'Fraunces', 'Charter', 'Georgia', serif;
+  --body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1815;
+    --bg-alt: #25221e;
+    --text: #faf7f2;
+    --muted: #a3a09a;
+    --accent: #e87a6e;
+    --accent-soft: #3a2622;
+    --card-bg: #25221e;
+    --border: #3a352e;
+    --shadow: 0 1px 2px rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.15);
+    --shadow-hover: 0 2px 4px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.25);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 16px 12px;
+  padding-top: max(14px, env(safe-area-inset-top));
+  backdrop-filter: saturate(180%) blur(8px);
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+}
+
+.title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 14;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.count {
+  font-family: var(--body);
+  font-size: 11px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.search-wrap {
+  position: relative;
+}
+
+input[type="search"] {
+  width: 100%;
+  padding: 12px 40px 12px 14px;
+  font-family: var(--body);
+  font-size: 16px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+input[type="search"]:focus {
+  border-color: var(--accent);
+  background: var(--card-bg);
+}
+
+input[type="search"]::placeholder {
+  color: var(--muted);
+}
+
+.clear-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 14px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background 0.15s;
+}
+
+.clear-btn.visible {
+  display: flex;
+}
+
+.clear-btn:active {
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 8px 12px;
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.01em;
+}
+
+.action-btn:active {
+  background: var(--border);
+  transform: scale(0.98);
+}
+
+.action-btn.primary {
+  background: var(--accent);
+  color: var(--card-bg);
+  border-color: var(--accent);
+}
+
+.action-btn.primary:active {
+  filter: brightness(0.9);
+}
+
+.families {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 12px 16px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.families::-webkit-scrollbar { display: none; }
+
+.chip {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  letter-spacing: 0.02em;
+}
+
+.chip:active {
+  transform: scale(0.95);
+}
+
+.chip.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+main {
+  padding: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s, transform 0.2s;
+  animation: fadeUp 0.4s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card:nth-child(1) { animation-delay: 0.02s; }
+.card:nth-child(2) { animation-delay: 0.05s; }
+.card:nth-child(3) { animation-delay: 0.08s; }
+.card:nth-child(4) { animation-delay: 0.11s; }
+.card:nth-child(5) { animation-delay: 0.14s; }
+.card:nth-child(6) { animation-delay: 0.17s; }
+.card:nth-child(n+7) { animation-delay: 0.2s; }
+
+.card-header {
+  padding: 16px 18px;
+  cursor: pointer;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.card-id {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--accent);
+  line-height: 1;
+  font-variation-settings: "opsz" 144;
+  min-width: 40px;
+  padding-top: 2px;
+}
+
+.card-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-famille {
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.card-objection {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--text);
+  font-variation-settings: "opsz" 14;
+}
+
+.card-objection mark {
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.card.expanded .card-body {
+  max-height: 4000px;
+}
+
+.card-body-inner {
+  padding: 0 18px 18px 18px;
+  border-top: 1px solid var(--border);
+  margin-top: 0;
+  padding-top: 14px;
+}
+
+.block {
+  margin-top: 14px;
+}
+
+.block:first-child {
+  margin-top: 0;
+}
+
+.block-label {
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.block-content {
+  font-family: var(--body);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.block-content.muted {
+  color: var(--muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.block-content mark {
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 1px 3px;
+  border-radius: 3px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--muted);
+}
+
+.empty-state .icon {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 48px;
+  color: var(--accent);
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 144;
+}
+
+.empty-state h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.empty-state p {
+  font-size: 13px;
+}
+
+footer {
+  text-align: center;
+  padding: 32px 24px;
+  color: var(--muted);
+  font-size: 11px;
+  border-top: 1px solid var(--border);
+  margin-top: 24px;
+  letter-spacing: 0.03em;
+}
+
+footer .ref {
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--text);
+}
+
+@media (min-width: 720px) {
+  header { padding: 20px 32px 16px; }
+  h1 { font-size: 22px; }
+  main { padding: 24px 32px; }
+  .families { padding: 16px 32px; }
+  .card-header { padding: 20px 22px; }
+  .card-objection { font-size: 17px; }
+  .card-id { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-row">
+    <h1>FAQ <em>Évaluer</em> à l'ère de l'IA</h1>
+    <span class="count" id="count">30 questions</span>
+  </div>
+  <div class="search-wrap">
+    <input type="search" id="search" placeholder="Mots-clés : oral, écolo, triche, débutants..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    <button class="clear-btn" id="clear" aria-label="Effacer">×</button>
+  </div>
+  <div class="actions">
+    <button class="action-btn primary" id="random">Tirage aléatoire</button>
+    <button class="action-btn" id="expand-all">Tout déplier</button>
+    <button class="action-btn" id="reset">Réinitialiser</button>
+  </div>
+</header>
+
+<nav class="families" id="families"></nav>
+
+<main id="results"></main>
+
+<footer>
+  <span class="ref">Évaluer en formation à l'ère de l'IA générative</span><br>
+  Rochane Kherbouche · Chronique Sociale · 2026
+</footer>
+
+<script>
+const DATA = [
+  {
+    id: '1.1',
+    famille: 'Oral et faisabilité',
+    famille_short: 'Oral',
+    objection: "L'oral c'est bien sur le papier, mais à 200 ou 500 étudiants, c'est ingérable",
+    presuppose: "L'oral est défini comme un entretien individuel de 30 minutes avec un professeur.",
+    pivot: "L'oral recouvre trois variantes distinctes : présentation défendue, entretien exploratoire, improvisation contrainte. Quatre stratégies absorbent le surcoût sur grands effectifs : mutualisation avec regroupements présentiels déjà planifiés (HELHa), oral asynchrone par visio, co-évaluation par pairs formés, réallocation budgétaire depuis les corrections de QCM automatisés.",
+    donnee: "Un oral de 20 min pour 15 apprenants = 5h. L'entretien flash (5-7 min ciblés sur 2-3 questions) ramène la promotion à 1h30 et suffit à détecter les délégations totales. L'oral collectif (3-4 apprenants en séquence) fait passer une heure financée à quatre évaluations.",
+    exemple: "Dispositif Ipeirotis (NYU, décembre 2025) : agent vocal IA ElevenLabs pour 100+ étudiants, transcription automatique, écoute à vitesse accélérée. L'IA qui menaçait l'écrit devient l'auxiliaire de l'oral.",
+    relance: "La vraie question : pourquoi avons-nous renoncé à l'oral ? Les QCM étaient industrialisables. L'IA détruit la validité de ces formats. L'équation économique change.",
+    mots_cles: ['oral', 'grands effectifs', 'gros groupes', 'masse', 'scalabilité', 'massif', '500', '200', 'cohorte', 'ingérable', 'ipeirotis', 'flash', 'collectif']
+  },
+  {
+    id: '1.2',
+    famille: 'Oral et faisabilité',
+    famille_short: 'Oral',
+    objection: "L'oral, on n'a pas le temps de corriger",
+    presuppose: "La correction écrite serait moins coûteuse en temps.",
+    pivot: "Un portfolio écrit avec processus documenté demande 30 à 45 minutes par apprenant à la première itération. Un oral de 20 minutes en demande 20. La correction écrite gourmande est précisément ce que la documentation rigoureuse exige. Le calcul \"l'écrit prend moins de temps\" reposait sur le QCM, qui ne certifie plus rien depuis l'IA.",
+    donnee: "Bilan trois ans d'un responsable francilien : temps de correction par apprenant passé de 45 minutes en année 1 à 28 minutes en année 3, par stabilisation des grilles et montée en compétence de l'équipe.",
+    relance: "Le temps de correction se calcule avec ses suites. Une copie écrite produite par IA et corrigée à l'ancienne ne certifie rien. Le temps gagné devient du temps perdu sur l'authenticité de la certification.",
+    mots_cles: ['temps', 'corriger', 'correction', 'chronophage', 'gourmand', 'lent', 'lourd', 'charge']
+  },
+  {
+    id: '1.3',
+    famille: 'Oral et faisabilité',
+    famille_short: 'Oral',
+    objection: "Et la traçabilité ? Un oral disparaît, on ne peut rien prouver en cas de contestation ou d'audit",
+    presuppose: "Seul l'écrit conservé tient face à un auditeur.",
+    pivot: "Deux dispositifs traitent ce point. Première option, grille d'observation remplie en temps réel par l'évaluateur, complétée de notes synthétiques immédiatement après l'échange. Deuxième option, enregistrement audio avec consentement explicite et stockage conforme. Les organismes ayant généralisé l'oral synchrone rapportent une réduction des contestations, parce que l'apprenant comprend en temps réel la logique de sa note.",
+    relance: "Une copie écrite produite par IA et corrigée traditionnellement ne laisse aucune trace utile en cas de contestation. Le formateur ne peut prouver ni l'authenticité du travail, ni la pertinence de sa correction. La traçabilité protège l'organisme uniquement si l'objet tracé est lui-même valide.",
+    mots_cles: ['traçabilité', 'preuve', 'audit', 'contestation', 'contester', 'auditeur', 'qualité', 'archivage']
+  },
+  {
+    id: '1.4',
+    famille: 'Oral et faisabilité',
+    famille_short: 'Oral',
+    objection: "L'oral discrimine les apprenants introvertis, bègues, anxieux, ou non-francophones",
+    presuppose: "L'oral en formation se réduit à une prise de parole publique formalisée.",
+    pivot: "Cette objection est légitime. Le manuscrit prévoit des modalités alternatives : oral écrit en temps contraint sous supervision, questions écrites avec réponses immédiates, tiers-temps supplémentaire. Le format dialogique peut être ajusté sans renoncer à la fonction de vérification.",
+    exemple: "Cas Faculté de médecine d'Oran : une étudiante neuroatypique a vu son travail jugé \"intégralement artificiel\" par un prompt détecteur, parce que sa phraséologie ne correspondait pas au registre attendu. L'évaluation écrite avec détection automatisée discrimine déjà ces publics. L'oral aménagé les protège davantage.",
+    mots_cles: ['discrimination', 'introvertis', 'bègues', 'anxieux', 'anxiété', 'non-francophones', 'neuroatypique', 'handicap', 'accessibilité', 'aménagements', 'inclusion', 'oran']
+  },
+  {
+    id: '1.5',
+    famille: 'Oral et faisabilité',
+    famille_short: 'Oral',
+    objection: "Les apprenants vont utiliser un assistant vocal pour tricher à l'oral aussi",
+    presuppose: "Tous les formats d'oral sont équivalents et tous vulnérables.",
+    pivot: "Trois caractéristiques rendent l'oral synchrone non substituable par IA générative à ce jour. La synchronicité (le tempo est imposé par l'évaluateur). L'imprévisibilité des questions (l'apprenant ne peut préparer l'exhaustivité des relances). L'interaction adaptative (l'évaluateur ajuste en temps réel selon les réponses).",
+    exemple: "Cas du stagiaire logisticien bruxellois cité au chapitre 7 : le script appris s'effondrait à la première relance sur un aléa de terrain (\"comment réagir si un fournisseur livre avec deux heures de retard un jour de pic d'activité ?\"). Silence. L'IA peut souffler une réponse. Elle ne peut tenir face à un évaluateur qui creuse.",
+    mots_cles: ['triche vocale', 'assistant vocal', 'IA vocale', 'oral triché', 'cheat oral', 'logisticien']
+  },
+  {
+    id: '2.1',
+    famille: 'Apprentissage et discernement',
+    famille_short: 'Apprentissage',
+    objection: "Comment demander aux apprenants un discernement disciplinaire alors qu'ils sont en train d'acquérir la discipline ?",
+    presuppose: "La maîtrise disciplinaire serait préalable à toute utilisation de l'IA.",
+    pivot: "Cette objection formule exactement le paradoxe du double ancrage théorisé par Christiane Caneva (Fribourg, 2025). Pour utiliser l'IA de manière critique dans un domaine, il faut maîtriser ce domaine et posséder une littératie IA. Les étudiants ont la littératie sans l'expertise, les enseignants l'expertise sans la littératie. Aucune des deux populations n'a les deux. La réponse pédagogique : construire les deux ensemble, par usage encadré, dès les premiers apprentissages.",
+    donnee: "HEPI 2025 : 88% des étudiants britanniques utilisent déjà l'IA pour leurs évaluations. La question \"faut-il les autoriser\" est tranchée par l'usage. La question pédagogique : comment les outiller pour le faire avec discernement plutôt que par délégation aveugle.",
+    exemple: "Un étudiant en droit qui rejette une suggestion juridiquement incorrecte de ChatGPT démontre sa compétence juridique, pas sa compétence IA. Ce qui est évalué, c'est le moment où il dit \"non, cette jurisprudence n'existe pas\" ou \"ce raisonnement contredit l'article 1240\". Le discernement disciplinaire devient observable précisément parce qu'il s'exerce sur une production IA imparfaite.",
+    relance: "Le paradoxe vaut aussi pour le pilotage automobile, la médecine, la finance, où le professionnel utilise des outils qu'il ne maîtrise pas techniquement mais dont il sait critiquer les sorties. L'apprentissage par usage encadré est la norme dans la plupart des métiers techniques.",
+    mots_cles: ['discernement', 'disciplinaire', 'débutants', 'novices', 'apprenants', 'paradoxe', 'double ancrage', 'caneva', 'fribourg', 'expertise', 'littératie']
+  },
+  {
+    id: '2.2',
+    famille: 'Apprentissage et discernement',
+    famille_short: 'Apprentissage',
+    objection: "Il faut bien que les jeunes apprennent les fondamentaux sans IA d'abord",
+    presuppose: "Les fondamentaux disciplinaires s'enseignent comme avant l'IA, l'IA arrive après comme couche supplémentaire.",
+    pivot: "La distinction échafaudage versus béquille de Tom Chatfield éclaire la réponse. L'IA devient béquille quand elle se substitue à la pensée et empêche l'apprentissage. Elle devient échafaudage quand elle force une articulation plus précise, stimule une pensée en cours d'émergence, expose les lacunes à l'apprenant lui-même. La même technologie produit l'un ou l'autre selon la conception pédagonumérique. Pas selon une chronologie \"fondamentaux puis IA\".",
+    donnee: "Étude Kosmyna (chapitre 1) : l'usage passif réduit l'activité neuronale, l'usage actif l'intensifie. Le facteur déterminant tient à la posture cognitive activée par le dispositif, indépendamment du moment d'introduction de l'IA dans le cursus.",
+    relance: "Les fondamentaux disciplinaires se construisent dans un dialogue critique avec des productions. Hier ces productions venaient de manuels, d'enseignants, de pairs. Aujourd'hui une partie vient de l'IA. La compétence à évaluer une proposition algorithmique est de la même famille que la compétence à évaluer un argument trouvé en bibliothèque.",
+    mots_cles: ['fondamentaux', 'basiques', 'sans IA', 'avant', 'd\'abord', 'échafaudage', 'béquille', 'chatfield', 'kosmyna', 'chronologie']
+  },
+  {
+    id: '2.3',
+    famille: 'Apprentissage et discernement',
+    famille_short: 'Apprentissage',
+    objection: "L'IA atrophie les capacités cognitives. Les apprenants vont devenir incapables de penser seuls",
+    presuppose: "Tout usage d'IA produit de la dépendance cognitive.",
+    pivot: "La dette cognitive documentée par Kosmyna et al. (2025) existe. Elle apparaît dans des usages spécifiques, identifiables, dont la caractéristique commune est la délégation sans validation. Le dispositif pédagogique conditionne le résultat. Une consigne qui demande de produire un texte avec ChatGPT et de le remettre tel quel produit de l'atrophie. Une consigne qui demande de produire un texte, de l'auditer, d'identifier deux erreurs factuelles, de justifier une formulation et d'en rejeter une autre produit de l'apprentissage.",
+    exemple: "Les étudiants de Wharton (modèle Mollick) documentent leurs interactions IA et analysent ce qu'ils ont gardé, modifié, rejeté. Ils ne présentent pas d'atrophie. Ils développent une littératie disciplinaire renforcée par la confrontation systématique à une production externe.",
+    mots_cles: ['atrophie', 'cerveau', 'cognition', 'dette cognitive', 'dépendance', 'paresse', 'kosmyna', 'pensée', 'penser', 'autonomie']
+  },
+  {
+    id: '2.4',
+    famille: 'Apprentissage et discernement',
+    famille_short: 'Apprentissage',
+    objection: "Si on les laisse utiliser ChatGPT, ils ne sauront jamais écrire",
+    presuppose: "Écrire et utiliser une IA pour écrire sont des compétences mutuellement exclusives.",
+    pivot: "La compétence à écrire ne se confond pas avec la compétence à produire un texte. Écrire suppose des opérations cognitives (planifier, structurer, hiérarchiser, reformuler, vérifier) que l'IA peut accélérer ou suppléer. La question pédagogique : quelles opérations veut-on évaluer, et dans quels contextes professionnels ces opérations seront-elles ou non assistées. Un gestionnaire de projet rédigera des comptes-rendus avec IA. Un médecin produira ses notes cliniques sous contrainte temporelle sans IA. Le format évaluatif doit refléter le contexte professionnel anticipé.",
+    exemple: "Témoignage d'un gestionnaire pédagogique à propos d'un apprenti couvreur : \"Qu'il le fasse écrire par ChatGPT, je m'en fous. L'essentiel, c'est qu'il soit conscient de ses points positifs et négatifs en tant que professionnel.\" Pour les métiers du geste, l'évaluation cible le geste maîtrisé, l'analyse en situation, le diagnostic de panne. La rédaction y reste périphérique.",
+    mots_cles: ['écrire', 'rédaction', 'écriture', 'rédiger', 'orthographe', 'expression écrite', 'couvreur', 'apprenti']
+  },
+  {
+    id: '3.1',
+    famille: 'Écologie',
+    famille_short: 'Écologie',
+    objection: "Le dialogue socratique avec IA pollue. C'est moral de l'imposer en formation ?",
+    presuppose: "L'usage pédagogique de l'IA est un usage superflu qu'on pourrait abolir sans coût.",
+    pivot: "La sobriété numérique est une dimension légitime du discernement. Elle oriente l'usage sans le trancher. Une requête ChatGPT consomme effectivement plus qu'une recherche Google (estimation AIE : facteur 10). Cette donnée ne suffit pas à déduire qu'il faut interdire l'IA en formation. Elle fonde une discipline d'usage : choisir le modèle adapté à la tâche, éviter les requêtes inutiles, intégrer une éducation au coût.",
+    donnee: "Livre blanc CapIA : 49% des répondants identifient les problèmes écologiques comme préoccupation à impact fort, le score le plus élevé. Le même panel rapporte un gain moyen de 3,5 heures hebdomadaires par l'IA. La question relève du discernement : utiliser pour quelle tâche, avec quel modèle.",
+    relance: "L'évaluation traditionnelle a aussi un coût écologique : transports d'examens, photocopies, surveillance physique, climatisation des amphithéâtres. Le bilan comparatif reste flou. L'éco-anxiété ne doit pas devenir argument de paralysie quand l'usage est massif par ailleurs.",
+    mots_cles: ['écologie', 'écolo', 'pollution', 'environnement', 'carbone', 'climat', 'planète', 'pollue', 'sobriété', 'moral', 'éthique environnementale']
+  },
+  {
+    id: '3.2',
+    famille: 'Écologie',
+    famille_short: 'Écologie',
+    objection: "L'IA consomme trop d'eau et d'électricité, on devrait interdire son usage en formation",
+    presuppose: "La consommation d'IA en formation est marginale et compressible sans coût pédagogique.",
+    pivot: "L'usage en formation représente une fraction très faible de l'usage global de l'IA (corporate, recherche, divertissement). L'interdiction en formation n'aurait aucun effet mesurable sur la consommation totale et priverait les apprenants d'une compétence professionnelle attendue dans la quasi-totalité des métiers où ils vont entrer.",
+    relance: "Si la sobriété est l'argument, alors les modèles spécialisés légers (SLM, modèles open-source en local) doivent être promus contre les modèles généralistes lourds. Cette discrimination technique relève de la compétence à enseigner. Elle ne constitue pas un alibi pour exclure l'IA du périmètre pédagogique.",
+    mots_cles: ['interdire', 'eau', 'électricité', 'énergie', 'consommation', 'data center', 'SLM', 'modèle léger']
+  },
+  {
+    id: '4.1',
+    famille: 'Détection et triche',
+    famille_short: 'Détection',
+    objection: "Il doit bien exister un détecteur fiable, c'est juste une question de temps",
+    presuppose: "La course technologique entre détecteurs et IA génératives est gagnable.",
+    pivot: "L'asymétrie est structurelle. Les développeurs d'IA générative testent leurs modèles contre les détecteurs existants avant déploiement. Les formateurs arrivent toujours avec une génération de retard. Les signatures stylistiques qui permettaient une détection partielle fin 2022 ont été effacées par GPT-4. Claude Sonnet 4 produit des textes dont la variabilité syntaxique égale celle d'écritures humaines compétentes.",
+    donnee: "Weber-Wulff et al. (2023) : 14 outils commerciaux testés sur plusieurs langues, taux de faux positifs jusqu'à 50%. Liang et al. (2023) : les détecteurs discriminent systématiquement les scripteurs non-natifs anglophones, trois à quatre fois plus marqués \"probablement IA\" indépendamment de la réalité. Ces systèmes ne mesurent pas l'IA, ils mesurent la conformité à un registre linguistique dominant.",
+    relance: "La course se perd par structure. Le calendrier n'y change rien. Investir dans la détection, c'est investir dans une course perdue.",
+    mots_cles: ['détecteur', 'détection', 'compilatio', 'turnitin', 'fiable', 'course technologique', 'gpt-zero', 'weber-wulff', 'liang']
+  },
+  {
+    id: '4.2',
+    famille: 'Détection et triche',
+    famille_short: 'Détection',
+    objection: "Mais alors, comment fait-on avec les tricheurs ?",
+    presuppose: "La triche est le problème, et le problème serait isolable.",
+    pivot: "La question \"comment attraper les tricheurs\" suppose que le problème vient de l'apprenant et que les évaluations actuelles seraient saines. Le manuscrit défend l'hypothèse inverse. Si une IA dépourvue de toute compréhension réussit l'évaluation, le défaut est dans l'évaluation. La triche disparaît par transformation du format. La surveillance la déplace sans la résoudre. Une soutenance orale ne se triche pas. Un processus documenté évalué dans un entretien de confrontation ne se triche pas non plus.",
+    donnee: "Enquête sur 48 professionnels francophones : un formateur passe en moyenne 12 heures à traquer 5 tricheurs. 12 heures soustraites à la conception, au feedback, à l'accompagnement. La surveillance produit du stress et de la dégradation pédagogique, jamais de l'intégrité réelle.",
+    mots_cles: ['tricheurs', 'tricher', 'triche', 'fraude', 'plagiat', 'intégrité', 'sanction', 'surveillance']
+  },
+  {
+    id: '4.3',
+    famille: 'Détection et triche',
+    famille_short: 'Détection',
+    objection: "Renoncer à la détection revient à valider la triche",
+    presuppose: "La seule alternative à la détection est la permissivité.",
+    pivot: "Le manuscrit propose un continuum d'usage à quatre positions, défini en amont de chaque évaluation : interdit, autorisé avec déclaration, autorisé sans déclaration, encouragé. Cette explicitation déplace l'éthique du soupçon vers la responsabilisation. Tricher devient violer une règle connue. La zone grise à contourner disparaît. Le contrat pédagogique explicite est l'instrument central de cette responsabilisation.",
+    relance: "La détection ne validait jamais l'intégrité, elle validait l'absence de signaux détectables. Renoncer à un instrument inefficace, biaisé contre les locuteurs non-natifs, et générateur de faux positifs ne revient pas à valider la triche. Cela revient à cesser de prétendre faire ce qu'on ne fait pas.",
+    mots_cles: ['valider la triche', 'permissif', 'laxisme', 'contrat pédagogique', 'continuum', 'déclaration']
+  },
+  {
+    id: '5.1',
+    famille: 'Équité et inégalités',
+    famille_short: 'Équité',
+    objection: "L'IA va creuser les inégalités entre apprenants",
+    presuppose: "L'inégalité numérique est nouvelle et l'évaluation traditionnelle serait neutre.",
+    pivot: "L'effet Matthieu documenté par Merton vaut pour l'IA comme pour toute technologie. Les étudiants déjà à l'aise avec le numérique et les codes disciplinaires tirent davantage profit de l'IA, ce qui renforce leurs avantages initiaux. L'évaluation traditionnelle n'était pas neutre non plus : elle valorisait déjà les capitaux culturels et linguistiques dominants. La vraie question pédagogique : comment l'évaluation pédagonumérique réduit ou amplifie l'inégalité existante.",
+    donnee: "HEPI 2025 : les étudiants issus de milieux favorisés utilisent davantage l'IA pour structurer leurs idées (42% contre 35% pour les milieux populaires), résumer des articles (50% contre 44%). Enquête manuscrit : 31% des organismes identifient l'accès inégal aux équipements comme contrainte majeure.",
+    relance: "Sandrine Decamps (cadre ARIA) le formule : l'accessibilité se conçoit en amont. Trois actions : financement institutionnel des licences, formation explicite à la littératie IA, conception de dispositifs fonctionnant avec versions gratuites. Le risque d'amplification existe en l'absence d'action ; il s'efface dès qu'on conçoit pour l'équité.",
+    mots_cles: ['inégalités', 'équité', 'matthieu', 'merton', 'fracture', 'capital culturel', 'milieux', 'défavorisés', 'discrimination sociale']
+  },
+  {
+    id: '5.2',
+    famille: 'Équité et inégalités',
+    famille_short: 'Équité',
+    objection: "Tous les apprenants n'ont pas Claude Pro ou ChatGPT Plus. Ce n'est pas équitable",
+    presuppose: "L'évaluation doit imposer une condition matérielle identique.",
+    pivot: "Deux réponses techniques. Première option, l'organisme fournit les licences. Le coût (20 euros mensuels par apprenant) reste inférieur à celui d'un manuel papier dans la plupart des cursus. Deuxième option, les consignes sont conçues pour fonctionner avec les versions gratuites, ce qui suppose d'accepter certaines limites fonctionnelles.",
+    relance: "L'évaluation traditionnelle n'imposait pas une condition matérielle identique. L'accès à des bibliothèques, à des espaces de travail calmes, à un tuteur familial, à un ordinateur personnel variait fortement. La fracture matérielle existe depuis longtemps. L'IA la rend visible, elle ne la crée pas.",
+    mots_cles: ['ChatGPT Plus', 'Claude Pro', 'abonnement', 'payant', 'gratuit', 'licence', 'accès', 'équipement', '20 euros']
+  },
+  {
+    id: '5.3',
+    famille: 'Équité et inégalités',
+    famille_short: 'Équité',
+    objection: "Évaluer avec IA, c'est récompenser ceux qui savent prompter, pas ceux qui maîtrisent la matière",
+    presuppose: "Le prompt est une compétence technique séparée du discernement disciplinaire.",
+    pivot: "Un bon prompt en droit suppose la maîtrise du droit. Demander à ChatGPT \"résume la jurisprudence sur la rupture brutale de relation commerciale en distinguant les positions de la Cour de cassation depuis 2018\" suppose de connaître le concept, la chronologie, l'autorité juridictionnelle, et la zone de débat. L'apprenant qui formule cette requête démontre déjà sa compétence disciplinaire. La capacité à prompter efficacement exprime la maîtrise du domaine sans s'y substituer.",
+    relance: "Le paradoxe du double ancrage de Caneva : on ne peut pas prompter intelligemment sur un sujet qu'on ne comprend pas. L'évaluation par interaction IA expose l'expertise disciplinaire à travers les traces.",
+    mots_cles: ['prompt', 'prompter', 'prompt engineering', 'art du prompt', 'savoir prompter', 'compétence technique']
+  },
+  {
+    id: '6.1',
+    famille: 'Processus documenté',
+    famille_short: 'Processus',
+    objection: "Évaluer le processus, ça revient à évaluer la maîtrise technique de l'IA ?",
+    presuppose: "Documenter l'interaction IA, c'est évaluer le prompt et la connaissance de l'outil.",
+    pivot: "Non, c'est le contre-sens à dissiper en priorité. L'évaluation du processus documenté évalue le discernement disciplinaire à travers les traces d'interaction. On ne note pas la qualité du prompt en tant que technique. On note les choix faits face aux propositions de l'IA : qu'est-ce qui a été retenu, modifié, rejeté, et pourquoi. Ces décisions révèlent la compétence du domaine.",
+    donnee: "Enquête 48 professionnels francophones : 80% utilisent l'expression \"évaluer le processus\" sans pouvoir décrire ce qu'ils regarderaient concrètement dans une copie. Cette confusion est massive. La clarification est nécessaire dans toute intervention.",
+    exemple: "Modèle Mollick et Mollick (Wharton). Les étudiants en entrepreneuriat soumettent leur business plan accompagné des prompts utilisés, des réponses obtenues, et d'une analyse expliquant quelles idées ont été conservées, modifiées ou rejetées. L'évaluation porte sur l'analyse, pas sur les prompts.",
+    mots_cles: ['processus documenté', 'documenter', 'processus', 'évaluer comment', 'contresens', 'discernement', 'traces']
+  },
+  {
+    id: '6.2',
+    famille: 'Processus documenté',
+    famille_short: 'Processus',
+    objection: "Concrètement, quand vous évaluez un processus documenté, vous regardez quoi ?",
+    presuppose: "La question est la demande la plus utile à recevoir, parce qu'elle force la précision.",
+    pivot: "Quatre dimensions structurent l'analyse d'une trace. Cohérence du raisonnement : l'apprenant articule-t-il ses choix dans une logique qui tient ? Itération : quand l'IA propose une formulation discutable, l'apprenant la corrige ou la valide passivement ? Métacognition explicite : sait-il expliquer pourquoi il a retenu telle proposition et rejeté telle autre ? Transparence d'usage : déclare-t-il spontanément les ressources mobilisées, y compris l'IA ?",
+    exemple: "Un étudiant en marketing soumet une stratégie multicanal. Il a interrogé ChatGPT sur les meilleurs canaux pour cible jeune. ChatGPT répond TikTok. L'étudiant note : \"je rejette cette suggestion, le brief client mentionne une cible CSP+ 45-55 ans, TikTok ne correspond pas à cette cible démographique\". Ce moment-là est ce qui s'évalue. Pas le prompt. Pas la sortie IA. Le moment où l'expertise disciplinaire corrige la production algorithmique.",
+    mots_cles: ['concrètement', 'regarder quoi', 'comment évaluer', 'quatre dimensions', 'cohérence', 'itération', 'métacognition', 'transparence']
+  },
+  {
+    id: '6.3',
+    famille: 'Processus documenté',
+    famille_short: 'Processus',
+    objection: "Les apprenants peuvent reconstituer un faux processus avec une autre IA pour donner l'illusion d'avoir réfléchi",
+    presuppose: "La documentation écrite suffirait à elle seule à prouver le processus.",
+    pivot: "C'est une limite réelle, identifiée dans le manuscrit. La réponse relève de la structure du dispositif : la documentation écrite ne suffit jamais seule. Elle doit être validée par un entretien de confrontation, oral, court (5 à 10 minutes), où l'apprenant défend ses choix. L'apprenant peut générer un faux processus écrit. Il ne peut pas tenir face à un évaluateur qui demande \"pourquoi avez-vous rejeté la proposition de la ligne 47 de votre log ?\". Ce dispositif est ce que le manuscrit appelle le couple agent socratique plus oral de confrontation.",
+    exemple: "Cas Mathieu (Lille, 2024-2025) cité au chapitre 9 : étudiant qui a sous-traité un dialogue socratique à une autre IA. Il a refusé l'oral de confrontation, ce qui valait auto-évaluation honnête de son absence de maîtrise. Le dispositif n'avait pas besoin de le détecter, il l'a forcé à se signaler lui-même.",
+    mots_cles: ['faux processus', 'reconstituer', 'simuler', 'fake', 'log', 'mathieu', 'confrontation', 'oral confrontation']
+  },
+  {
+    id: '7.1',
+    famille: 'Métier de formateur',
+    famille_short: 'Métier',
+    objection: "Vous voulez supprimer le métier de formateur",
+    presuppose: "Transformer l'évaluation reviendrait à automatiser la fonction.",
+    pivot: "Le contraire. Le manuscrit défend un recentrage du formateur sur des activités où l'humain reste irremplaçable : conception de dispositifs, animation des dialogues, validation des compétences tacites, ajustement relationnel, jugement final. Le temps libéré par l'abandon des corrections de QCM et la réduction de la traque des fraudes va vers ces activités. Le formateur sort du rôle de détective qui dégrade actuellement sa pratique.",
+    donnee: "Enquête manuscrit : 40% d'augmentation du temps consacré à l'analyse des patterns de réponse pour détecter les fraudes. Un formateur : \"Douze heures passées à traquer cinq tricheurs. Douze heures que je n'ai pas consacrées à améliorer mes consignes ou à créer des études de cas.\" La transformation libère du temps de métier.",
+    mots_cles: ['supprimer métier', 'formateur', 'enseignant', 'remplacer', 'remplacement', 'détective', 'rôle']
+  },
+  {
+    id: '7.2',
+    famille: 'Métier de formateur',
+    famille_short: 'Métier',
+    objection: "Évaluer avec l'IA, ça déshumanise la relation pédagogique",
+    presuppose: "La relation pédagogique actuelle serait humaine et l'IA introduirait une rupture.",
+    pivot: "La relation pédagogique actuelle, dans les formations à grande échelle, est largement automatisée : QCM corrigés par algorithme, dissertations notées sans entretien, plateformes LMS qui produisent des feedbacks standardisés. L'IA n'introduit pas la déshumanisation, elle la rend visible. Les postures défendues par le manuscrit (oral synchrone, dialogue socratique préparatoire, entretien de confrontation) augmentent la part d'interaction humaine réelle.",
+    relance: "L'IA socratique crée les conditions permettant au formateur d'observer la pensée en action. Le formateur reste l'évaluateur. Le moment d'évaluation devient un moment d'apprentissage supervisé.",
+    mots_cles: ['déshumanisation', 'déshumaniser', 'humain', 'relation pédagogique', 'froid', 'robotique', 'chaleur', 'humanité']
+  },
+  {
+    id: '7.3',
+    famille: 'Métier de formateur',
+    famille_short: 'Métier',
+    objection: "Les formateurs ne sont pas formés à ces nouvelles pratiques. On ne peut pas leur demander ça",
+    presuppose: "La formation des formateurs serait préalable à toute transformation.",
+    pivot: "L'enquête manuscrit confirme la lacune : 64% des praticiens identifient l'absence de formation à l'IA comme obstacle majeur. La lacune est réelle. Elle structure le plan de transformation. Le chapitre 9 du manuscrit propose un plan sur 18 mois où la formation des équipes s'intègre à la mise en œuvre. On apprend en faisant, sur des pilotes restreints, avec un accompagnement gradué.",
+    donnee: "Le manuscrit signale que 94% des décideurs qui transforment leurs dispositifs sont eux-mêmes utilisateurs quotidiens d'IA. La transformation suit l'implication personnelle, elle ne se décrète pas par formation collective préalable.",
+    mots_cles: ['pas formés', 'formation des formateurs', 'compétences', 'accompagnement', 'plan', 'transformation', 'pilotes']
+  },
+  {
+    id: '8.1',
+    famille: 'Institutionnel et budgétaire',
+    famille_short: 'Institutionnel',
+    objection: "Mon institution ne suivra jamais",
+    presuppose: "La transformation suppose un alignement institutionnel descendant.",
+    pivot: "Le manuscrit décrit une voie ascendante. Un pilote restreint sur 2 ou 3 évaluations, mené par un formateur volontaire, avec collecte de données qualitatives et quantitatives, produit un cas. Ce cas convainc plus efficacement qu'une note de cadrage. Le chapitre 9 documente le calendrier type : 3 à 5 pilotes sur 6 mois, déploiement progressif sur 12 mois supplémentaires, consolidation sur 6 mois.",
+    exemple: "Les organismes qui ont transformé leurs évaluations ont commencé par un pilote, jamais par une réforme institutionnelle. Le cas APRADIS (médico-social) cité dans le Livre blanc CapIA en est un exemple.",
+    mots_cles: ['institution', 'hiérarchie', 'top-down', 'ne suivra pas', 'direction', 'résistance', 'ascendant', 'descendant', 'pilote']
+  },
+  {
+    id: '8.2',
+    famille: 'Institutionnel et budgétaire',
+    famille_short: 'Institutionnel',
+    objection: "On n'a pas le budget",
+    presuppose: "Le statu quo serait gratuit.",
+    pivot: "Le coût du statu quo, sur trois ans, dépasse celui de la transformation. Contestations de notes industrialisées, non-conformités lors d'audits qualité, perte de crédibilité auprès des financeurs et employeurs. La vraie question : où investir ce budget, en prévention ou en gestion de crise.",
+    donnee: "Pour un organisme de 12 formateurs et 300 apprenants, le plan de transformation mobilise 40 à 60 jours-personnes sur 18 mois, soit l'équivalent d'un mi-temps dédié. Coût direct hors temps interne : 5 000 à 15 000 euros d'accompagnement, plus 2 000 à 5 000 euros annuels d'outils. À comparer aux pertes que génère une certification dévalorisée auprès des employeurs.",
+    mots_cles: ['budget', 'coût', 'cher', 'financement', 'argent', 'investissement', 'ROI', 'rentabilité']
+  },
+  {
+    id: '8.3',
+    famille: 'Institutionnel et budgétaire',
+    famille_short: 'Institutionnel',
+    objection: "L'IA évolue trop vite, on va transformer pour rien",
+    presuppose: "La transformation viserait à neutraliser un outil spécifique.",
+    pivot: "Les principes de l'évaluation authentique sont stables depuis trente ans (Biggs, alignement constructif). Ce qui change avec l'IA, c'est l'urgence de les appliquer. Une évaluation orale synchrone restera robuste quelle que soit l'évolution de l'IA. Une évaluation de processus documenté s'adapte aux nouveaux outils sans refonte structurelle. La transformation porte sur le paradigme, indépendamment des évolutions techniques de GPT-4 ou de ses successeurs.",
+    relance: "Continuer avec des QCM et des dissertations à domicile, c'est faire le pari que l'IA va disparaître ou régresser. Ce pari est plus risqué que la transformation.",
+    mots_cles: ['évolue vite', 'rapidement', 'changement', 'attendre', 'voir', 'transformer pour rien', 'biggs', 'alignement constructif']
+  },
+  {
+    id: '9.1',
+    famille: 'RGPD et données',
+    famille_short: 'RGPD',
+    objection: "Documenter les interactions IA, c'est collecter des données personnelles sensibles",
+    presuppose: "La documentation se ferait sur serveur de l'organisme avec stockage prolongé.",
+    pivot: "Le manuscrit prévoit plusieurs architectures conformes. L'application Argos/DES est stateless : aucune donnée ne réside sur serveur, toutes les conversations sont en mémoire vive de l'appareil de l'apprenant. Rafraîchir la page efface définitivement les échanges. Pour les portfolios, l'apprenant exporte un PDF qu'il soumet à l'évaluation. L'organisme ne stocke que le document d'évaluation, comme pour une copie écrite.",
+    mots_cles: ['RGPD', 'données personnelles', 'sensibles', 'conformité', 'juridique', 'DPO', 'stateless', 'stockage', 'serveur']
+  },
+  {
+    id: '9.2',
+    famille: 'RGPD et données',
+    famille_short: 'RGPD',
+    objection: "Demander aux apprenants d'utiliser ChatGPT, c'est leur imposer de donner leurs données à OpenAI",
+    presuppose: "ChatGPT serait le seul outil utilisable.",
+    pivot: "Le manuscrit ne nomme pas un outil unique. Les architectures variées sont décrites : APIs Anthropic ou OpenAI hébergées en UE, modèles open source en local (Llama, Mistral), instances privées sur infrastructure souveraine. La compétence à choisir l'outil adapté à la sensibilité des données est elle-même une littératie IA à enseigner. Le choix structurel relève de la gouvernance de l'organisme. Le dispositif évaluatif lui-même n'en est pas l'arbitre.",
+    mots_cles: ['OpenAI', 'données apprenants', 'vie privée', 'souveraineté', 'Mistral', 'Llama', 'local', 'open source']
+  },
+  {
+    id: '10.1',
+    famille: 'Questions fondamentales',
+    famille_short: 'Fondamentaux',
+    objection: "À quoi ça sert d'apprendre si l'IA fait tout ?",
+    presuppose: "L'IA \"fait tout\" et l'apprentissage serait substituable.",
+    pivot: "L'IA produit. Elle ne comprend pas. La distinction est centrale dans le livre. Comprendre suppose de savoir valider, critiquer, contextualiser, articuler à une situation singulière. L'IA hallucine, biaise, généralise. Sans expertise humaine pour piloter et corriger, sa production reste inopérante. L'apprentissage conditionne l'usage discerné de l'IA.",
+    donnee: "Doru et al. (2025) : même les experts disciplinaires identifient correctement les textes générés par IA dans seulement 70% des cas. La détection passive ne suffit pas. Ce qui distingue l'expert du novice, c'est la capacité à corriger, pas à détecter. Cette capacité s'apprend.",
+    mots_cles: ['à quoi ça sert', 'sens', 'utilité', 'apprendre', 'comprendre', 'humain', 'hallucinations', 'doru']
+  },
+  {
+    id: '10.2',
+    famille: 'Questions fondamentales',
+    famille_short: 'Fondamentaux',
+    objection: "Vous formez à des métiers qui n'existeront plus dans 5 ans",
+    presuppose: "La formation viserait des métiers et non des compétences.",
+    pivot: "La durée de vie d'une compétence technique est passée de 30 ans en 1987 à environ 5 ans aujourd'hui (estimation OCDE). Pour le code informatique, parfois 18 mois. La formation ne peut plus viser un métier stable, elle vise un portefeuille de compétences évolutives. Le discernement disciplinaire augmenté par l'IA est précisément l'une de ces compétences. Évaluer ce discernement, c'est former à apprendre en continu.",
+    relance: "Le diplôme n'est plus un passeport à vie, c'est un visa renouvelable. L'évaluation doit refléter cette nouvelle économie de la compétence. Une certification figée vaut moins qu'une certification qui atteste une capacité d'adaptation. C'est ce que l'évaluation processuelle commence à mesurer.",
+    mots_cles: ['métiers', 'disparaître', 'futur', 'obsolète', 'compétences', 'OCDE', 'durée de vie', 'diplôme']
+  }
+];
+
+const FAMILIES = [...new Set(DATA.map(d => d.famille_short))];
+
+const $ = id => document.getElementById(id);
+const searchInput = $('search');
+const clearBtn = $('clear');
+const resultsEl = $('results');
+const countEl = $('count');
+const familiesEl = $('families');
+const randomBtn = $('random');
+const expandAllBtn = $('expand-all');
+const resetBtn = $('reset');
+
+let activeFamilies = new Set();
+let currentQuery = '';
+let allExpanded = false;
+
+function normalize(s) {
+  return s.toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/['']/g, "'");
+}
+
+function highlight(text, terms) {
+  if (!text || terms.length === 0) return escapeHTML(text || '');
+  const normalText = normalize(text);
+  let escaped = escapeHTML(text);
+  const positions = [];
+  terms.forEach(term => {
+    if (term.length < 2) return;
+    const normTerm = normalize(term);
+    let idx = 0;
+    while ((idx = normalText.indexOf(normTerm, idx)) !== -1) {
+      positions.push([idx, idx + normTerm.length]);
+      idx += normTerm.length;
+    }
+  });
+  if (positions.length === 0) return escaped;
+  positions.sort((a, b) => a[0] - b[0]);
+  const merged = [];
+  positions.forEach(p => {
+    if (merged.length && p[0] <= merged[merged.length - 1][1]) {
+      merged[merged.length - 1][1] = Math.max(merged[merged.length - 1][1], p[1]);
+    } else {
+      merged.push([...p]);
+    }
+  });
+  let result = '';
+  let last = 0;
+  merged.forEach(([start, end]) => {
+    result += escapeHTML(text.slice(last, start));
+    result += '<mark>' + escapeHTML(text.slice(start, end)) + '</mark>';
+    last = end;
+  });
+  result += escapeHTML(text.slice(last));
+  return result;
+}
+
+function escapeHTML(s) {
+  if (!s) return '';
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function score(entry, terms) {
+  if (terms.length === 0) return 1;
+  const haystack = normalize(
+    entry.objection + ' ' +
+    entry.pivot + ' ' +
+    (entry.donnee || '') + ' ' +
+    (entry.exemple || '') + ' ' +
+    (entry.relance || '') + ' ' +
+    entry.mots_cles.join(' ') + ' ' +
+    entry.famille
+  );
+  let s = 0;
+  terms.forEach(t => {
+    const nt = normalize(t);
+    if (nt.length < 2) return;
+    const inKeywords = entry.mots_cles.some(k => normalize(k).includes(nt));
+    const inObjection = normalize(entry.objection).includes(nt);
+    const inHay = haystack.includes(nt);
+    if (inKeywords) s += 10;
+    if (inObjection) s += 5;
+    if (inHay) s += 1;
+  });
+  return s;
+}
+
+function renderFamilies() {
+  familiesEl.innerHTML = '';
+  const allChip = document.createElement('button');
+  allChip.className = 'chip' + (activeFamilies.size === 0 ? ' active' : '');
+  allChip.textContent = 'Toutes';
+  allChip.onclick = () => { activeFamilies.clear(); renderFamilies(); render(); };
+  familiesEl.appendChild(allChip);
+  FAMILIES.forEach(f => {
+    const chip = document.createElement('button');
+    chip.className = 'chip' + (activeFamilies.has(f) ? ' active' : '');
+    chip.textContent = f;
+    chip.onclick = () => {
+      if (activeFamilies.has(f)) activeFamilies.delete(f);
+      else activeFamilies.add(f);
+      renderFamilies();
+      render();
+    };
+    familiesEl.appendChild(chip);
+  });
+}
+
+function render() {
+  const terms = currentQuery.trim().split(/\s+/).filter(t => t.length > 0);
+  let filtered = DATA;
+  if (activeFamilies.size > 0) {
+    filtered = filtered.filter(d => activeFamilies.has(d.famille_short));
+  }
+  if (terms.length > 0) {
+    filtered = filtered
+      .map(d => ({ entry: d, s: score(d, terms) }))
+      .filter(x => x.s > 0)
+      .sort((a, b) => b.s - a.s)
+      .map(x => x.entry);
+  }
+  countEl.textContent = filtered.length + (filtered.length > 1 ? ' questions' : ' question');
+  if (filtered.length === 0) {
+    resultsEl.innerHTML = `
+      <div class="empty-state">
+        <div class="icon">∅</div>
+        <h2>Aucun résultat</h2>
+        <p>Essaie d'autres mots-clés, ou réinitialise les filtres.</p>
+      </div>
+    `;
+    return;
+  }
+  resultsEl.innerHTML = filtered.map(d => renderCard(d, terms)).join('');
+  resultsEl.querySelectorAll('.card-header').forEach(h => {
+    h.addEventListener('click', () => {
+      h.parentElement.classList.toggle('expanded');
+    });
+  });
+}
+
+function renderCard(d, terms) {
+  const expandClass = allExpanded ? ' expanded' : '';
+  return `
+    <article class="card${expandClass}" data-id="${d.id}">
+      <div class="card-header">
+        <div class="card-id">${d.id}</div>
+        <div class="card-title-wrap">
+          <span class="card-famille">${escapeHTML(d.famille_short)}</span>
+          <div class="card-objection">«&nbsp;${highlight(d.objection, terms)}&nbsp;»</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          ${d.presuppose ? `
+            <div class="block">
+              <span class="block-label">Présupposé piégé</span>
+              <div class="block-content muted">${highlight(d.presuppose, terms)}</div>
+            </div>
+          ` : ''}
+          <div class="block">
+            <span class="block-label">Réponse pivot</span>
+            <div class="block-content">${highlight(d.pivot, terms)}</div>
+          </div>
+          ${d.donnee ? `
+            <div class="block">
+              <span class="block-label">Donnée</span>
+              <div class="block-content">${highlight(d.donnee, terms)}</div>
+            </div>
+          ` : ''}
+          ${d.exemple ? `
+            <div class="block">
+              <span class="block-label">Exemple</span>
+              <div class="block-content">${highlight(d.exemple, terms)}</div>
+            </div>
+          ` : ''}
+          ${d.relance ? `
+            <div class="block">
+              <span class="block-label">Relance</span>
+              <div class="block-content">${highlight(d.relance, terms)}</div>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+let searchTimer;
+searchInput.addEventListener('input', e => {
+  currentQuery = e.target.value;
+  clearBtn.classList.toggle('visible', currentQuery.length > 0);
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(render, 120);
+});
+
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  currentQuery = '';
+  clearBtn.classList.remove('visible');
+  searchInput.focus();
+  render();
+});
+
+randomBtn.addEventListener('click', () => {
+  let pool = DATA;
+  if (activeFamilies.size > 0) {
+    pool = pool.filter(d => activeFamilies.has(d.famille_short));
+  }
+  if (pool.length === 0) return;
+  const picked = pool[Math.floor(Math.random() * pool.length)];
+  searchInput.value = '';
+  currentQuery = '';
+  clearBtn.classList.remove('visible');
+  resultsEl.innerHTML = renderCard(picked, []);
+  resultsEl.querySelector('.card').classList.add('expanded');
+  resultsEl.querySelector('.card-header').addEventListener('click', e => {
+    e.currentTarget.parentElement.classList.toggle('expanded');
+  });
+  countEl.textContent = 'tirage';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+expandAllBtn.addEventListener('click', () => {
+  allExpanded = !allExpanded;
+  expandAllBtn.textContent = allExpanded ? 'Tout replier' : 'Tout déplier';
+  render();
+});
+
+resetBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  currentQuery = '';
+  clearBtn.classList.remove('visible');
+  activeFamilies.clear();
+  allExpanded = false;
+  expandAllBtn.textContent = 'Tout déplier';
+  renderFamilies();
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+renderFamilies();
+render();
+
+// Enregistrement du service worker pour offline et installation PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('SW registered'))
+      .catch(err => console.log('SW registration failed:', err));
+  });
+}
+</script>
+
+</body>
+</html>

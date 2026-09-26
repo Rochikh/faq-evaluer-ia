@@ -1,7 +1,7 @@
 // Service Worker — FAQ Évaluer IA
 // Stratégie : cache-first pour les assets, network avec fallback pour le HTML
 
-const CACHE = 'faq-evaluer-ia-v1';
+const CACHE = 'faq-evaluer-ia-v2';
 const ASSETS = [
   './',
   './index.html',
