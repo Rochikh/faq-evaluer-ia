@@ -1,14 +1,15 @@
 // Service Worker — FAQ Évaluer IA
 // Stratégie : cache-first pour les assets, network avec fallback pour le HTML
 
-const CACHE = 'faq-evaluer-ia-v3';
+const CACHE = 'faq-evaluer-ia-v4';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
-  './favicon-32.png'
+  './favicon-32.png',
+  './og-image.png'
 ];
 
 self.addEventListener('install', event => {
